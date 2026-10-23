@@ -14,7 +14,7 @@
     }
   },
   "bin": {
-    "nectar": "./bin/nectar.mjs"
+    "nectar": "bin/nectar.mjs"
   },
   "files": [
     "dist",
