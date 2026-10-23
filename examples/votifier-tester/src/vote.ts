@@ -1,4 +1,4 @@
-import { decodeBody, type NectarClient } from '@hivepanel/nectar';
+import { decodeBody, type NectarClient } from '@hivedevelopment/nectar';
 import { makeVotePacket } from './protocol.js';
 
 export async function sendTestVote(client: Pick<NectarClient, 'network'>, input: {

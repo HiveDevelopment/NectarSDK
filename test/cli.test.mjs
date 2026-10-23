@@ -29,6 +29,6 @@ test('npm scaffolding pins the release instead of retaining an npx cache path', 
         const target = path.join(root, 'extension');
         run(['init', target, '--id', 'test.registry', '--sdk-source', 'npm'], root);
         const pkg = JSON.parse(await readFile(path.join(target, 'package.json'), 'utf8'));
-        assert.equal(pkg.dependencies['@hivepanel/nectar'], '0.3.0');
+        assert.equal(pkg.dependencies['@hivedevelopment/nectar'], '0.3.0');
     } finally { await rm(root, { recursive: true, force: true }); }
 });

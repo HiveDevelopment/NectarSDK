@@ -1,23 +1,21 @@
 # Publish the SDK
 
-Target repository: **HiveDevelopment/nectar-sdk** (public). Package: **@hivepanel/nectar**. Version: **0.3.0**.
+Target repository: **HiveDevelopment/NectarSDK** (public). Package: **@hivedevelopment/nectar**. Version: **0.3.0**.
 
-## Create the repository
+## Use the repository
 
-From the SDK directory, with GitHub CLI installed and authenticated:
+The repository is **HiveDevelopment/NectarSDK**. Clone it and wait for the Windows/Linux Node 22/24 SDK checks before publishing:
 
 ```powershell
-git init -b main
-git add .
-git commit -m "Release Nectar SDK 0.3.0"
-gh repo create HiveDevelopment/nectar-sdk --public --description "Typed SDK and development tools for HivePanel Nectar extensions" --source . --remote origin --push
+git clone https://github.com/HiveDevelopment/NectarSDK.git
+cd NectarSDK
+npm ci
+npm test
 ```
-
-If the repository already exists, add its remote and push instead. Do not overwrite an existing repository. Wait for all four SDK check jobs (Windows/Linux, Node 22/24) to pass before publishing.
 
 ## First npm publication
 
-Use an npm account authorized for the **hivepanel** scope. If the organization does not exist, its owner must create it on npm first. Do not share login tokens in chat.
+Use an npm account authorized for the **hivedevelopment** scope. If the organization does not exist, its owner must create it on npm first. Do not share login tokens in chat.
 
 ```powershell
 npm login
@@ -26,7 +24,7 @@ npm ci
 npm test
 npm publish --dry-run --access public
 npm publish --access public
-npm view @hivepanel/nectar@0.3.0 version
+npm view @hivedevelopment/nectar@0.3.0 version
 ```
 
 Follow npm's browser/2FA prompts. Do not republish 0.3.0 if it already exists; bump the version for later changes. A local first publish does not use GitHub provenance.
@@ -36,7 +34,7 @@ Follow npm's browser/2FA prompts. Do not republish 0.3.0 if it already exists; b
 In the npm package settings, add a GitHub Actions trusted publisher:
 
 - Organization/user: HiveDevelopment
-- Repository: nectar-sdk
+- Repository: NectarSDK
 - Workflow filename: publish.yml
 - Allow direct publishing with npm publish
 

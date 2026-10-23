@@ -21,7 +21,7 @@ npm run pack
 From a source checkout, the generator references your local SDK using a relative `file:` dependency. Keep that directory available while developing. Once version 0.3.0 has been published to npm, developers can instead use:
 
 ```bash
-npx --package @hivepanel/nectar@0.3.0 nectar init my-extension --id yourname.example --panel-version dev --sdk-source npm
+npx --package @hivedevelopment/nectar@0.3.0 nectar init my-extension --id yourname.example --panel-version dev --sdk-source npm
 cd my-extension
 npm install
 npm run dev
@@ -47,7 +47,7 @@ For this host version, replacing an installed extension requires disabling and u
 ## Client API
 
 ```ts
-import { applyTheme, createNectar, decodeBody, NectarError } from '@hivepanel/nectar';
+import { applyTheme, createNectar, decodeBody, NectarError } from '@hivedevelopment/nectar';
 
 const nectar = createNectar();
 const { cellId, ui } = await nectar.ready;
@@ -237,7 +237,7 @@ Run `nectar doctor --built` inside your extension. It checks Node.js, manifest v
 Import `NectarManifest`, `ExtensionPage`, `ExtensionSetting`, `Permission`, `WidgetSlot`, `SidebarGroup` and `SidebarIcon` for tooling and typed configuration. For example:
 
 ```ts
-import type { NectarManifest } from '@hivepanel/nectar';
+import type { NectarManifest } from '@hivedevelopment/nectar';
 const manifest = {
     id: 'example.tools', name: 'Tools', version: '1.0.0', panelCompatibility: 'dev',
     frontend: { entry: 'dist/index.html', slots: ['dashboard.widgets'] },
@@ -249,7 +249,7 @@ The CLI still reads **nectar.json**. These types provide editor checking; they d
 ## Reusable translations
 
 ```ts
-import { createTranslator } from '@hivepanel/nectar';
+import { createTranslator } from '@hivedevelopment/nectar';
 const language = createTranslator({
     en: { welcome: 'Hello {name}' },
     de: { welcome: 'Hallo {name}' },

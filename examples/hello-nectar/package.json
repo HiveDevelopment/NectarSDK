@@ -9,6 +9,6 @@
     "dev": "nectar dev"
   },
   "dependencies": {
-    "@hivepanel/nectar": "file:../.."
+    "@hivedevelopment/nectar": "file:../.."
   }
 }

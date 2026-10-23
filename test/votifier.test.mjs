@@ -10,7 +10,7 @@ import { build } from 'esbuild';
 import { makeVotePacket } from '../examples/votifier-tester/src/protocol.js';
 import { mockCapability, defaultFixtures } from '../bin/preview.mjs';
 const folder = await mkdtemp(path.join(tmpdir(),'nectar-vote-'));
-await build({ entryPoints:[fileURLToPath(new URL('../examples/votifier-tester/src/vote.ts',import.meta.url))],alias:{'@hivepanel/nectar':fileURLToPath(new URL('../dist/index.js',import.meta.url))},outfile:path.join(folder,'vote.mjs'),bundle:true,platform:'node',format:'esm' });
+await build({ entryPoints:[fileURLToPath(new URL('../examples/votifier-tester/src/vote.ts',import.meta.url))],alias:{'@hivedevelopment/nectar':fileURLToPath(new URL('../dist/index.js',import.meta.url))},outfile:path.join(folder,'vote.mjs'),bundle:true,platform:'node',format:'esm' });
 const { sendTestVote } = await import(pathToFileURL(path.join(folder,'vote.mjs')));
 await rm(folder,{ recursive:true,force:true });
 function verify(packet,token,challenge) {

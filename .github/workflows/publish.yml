@@ -6,7 +6,7 @@ permissions:
   id-token: write
 jobs:
   publish:
-    if: github.repository == 'HiveDevelopment/nectar-sdk' && github.ref == 'refs/heads/main'
+    if: github.repository == 'HiveDevelopment/NectarSDK' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

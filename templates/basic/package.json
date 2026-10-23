@@ -10,6 +10,6 @@
     "doctor": "nectar doctor --built"
   },
   "dependencies": {
-    "@hivepanel/nectar": "file:../.."
+    "@hivedevelopment/nectar": "file:../.."
   }
 }

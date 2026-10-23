@@ -1,4 +1,4 @@
-import { applyTheme, createNectar, createTranslator } from '@hivepanel/nectar';
+import { applyTheme, createNectar, createTranslator } from '@hivedevelopment/nectar';
 
 const language = createTranslator({
     en: { title: 'Hello Nectar', refresh: 'Refresh Cells', loading: 'Loading…', empty: 'No Cells are available to your account.', count: '{count} visible Cell(s)', locale: 'Language: {locale}', error: 'Could not load Cells.' },

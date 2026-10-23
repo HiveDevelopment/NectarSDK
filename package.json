@@ -1,5 +1,5 @@
 {
-  "name": "@hivepanel/nectar",
+  "name": "@hivedevelopment/nectar",
   "version": "0.3.0",
   "description": "Typed sandbox bridge and extension tooling for HivePanel Nectar",
   "type": "module",
@@ -39,11 +39,11 @@
   "author": "Jordan Watts (Hive Development)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HiveDevelopment/nectar-sdk.git"
+    "url": "git+https://github.com/HiveDevelopment/NectarSDK.git"
   },
   "homepage": "https://docs.hivepanel.dev/nectar/",
   "bugs": {
-    "url": "https://github.com/HiveDevelopment/nectar-sdk/issues"
+    "url": "https://github.com/HiveDevelopment/NectarSDK/issues"
   },
   "publishConfig": {
     "access": "public",

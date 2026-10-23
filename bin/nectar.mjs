@@ -52,7 +52,7 @@ try {
         const pkg = JSON.parse(await readFile(path.join(target, 'package.json'), 'utf8'));
         pkg.name = id;
         const sdkVersion = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')).version;
-        pkg.dependencies['@hivepanel/nectar'] = source === 'npm' ? sdkVersion : `file:${path.relative(target, root).split(path.sep).join('/') || '.'}`;
+        pkg.dependencies['@hivedevelopment/nectar'] = source === 'npm' ? sdkVersion : `file:${path.relative(target, root).split(path.sep).join('/') || '.'}`;
         await writeFile(path.join(target, 'package.json'), JSON.stringify(pkg, null, 2) + '\n');
         console.log(`Created ${target}\nNext: cd ${targetName}, npm install, npm run build, npm run pack`);
     } else if (command === 'validate') {

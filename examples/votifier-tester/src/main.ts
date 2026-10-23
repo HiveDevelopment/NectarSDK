@@ -1,4 +1,4 @@
-import { applyTheme, createNectar, type Cell } from '@hivepanel/nectar';
+import { applyTheme, createNectar, type Cell } from '@hivedevelopment/nectar';
 import { sendTestVote } from './vote';
 import { enhanceSelect } from './select';
 

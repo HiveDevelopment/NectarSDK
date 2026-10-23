@@ -10,6 +10,6 @@
     "pack": "nectar pack"
   },
   "dependencies": {
-    "@hivepanel/nectar": "file:../.."
+    "@hivedevelopment/nectar": "file:../.."
   }
 }
