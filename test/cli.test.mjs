@@ -19,7 +19,7 @@ test('generated projects diagnose cleanly and an existing directory is never ove
         assert.equal(await readFile(path.join(target, 'nectar.json'), 'utf8'), before);
         assert.equal(spawnSync(process.execPath, [cli, 'doctor', '--built'], { cwd: target }).status, 1);
         assert.equal(spawnSync(process.execPath, [cli, 'doctor', '--panel-version', 'wrong'], { cwd: target }).status, 1);
-        assert.match(run(['--version'], target), /^0\.3\.0/);
+        assert.match(run(['--version'], target), /^0\.4\.0/);
     } finally { await rm(root, { recursive: true, force: true }); }
 });
 
@@ -29,6 +29,6 @@ test('npm scaffolding pins the release instead of retaining an npx cache path', 
         const target = path.join(root, 'extension');
         run(['init', target, '--id', 'test.registry', '--sdk-source', 'npm'], root);
         const pkg = JSON.parse(await readFile(path.join(target, 'package.json'), 'utf8'));
-        assert.equal(pkg.dependencies['@hivedevelopment/nectar'], '0.3.0');
+        assert.equal(pkg.dependencies['@hivedevelopment/nectar'], '0.4.0');
     } finally { await rm(root, { recursive: true, force: true }); }
 });

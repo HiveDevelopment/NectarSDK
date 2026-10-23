@@ -1,7 +1,7 @@
 {
   "id": "hivepanel.votifier-tester",
   "name": "Votifier Tester",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "panelCompatibility": "dev",
   "description": "Send a NuVotifier v2 test vote to a Minecraft Cell allocation.",
   "permissions": [

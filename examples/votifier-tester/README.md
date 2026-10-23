@@ -43,3 +43,7 @@ The page uses SDK theme updates and its own English/German translation files. It
 ## Protocol reference
 
 The implementation follows [NuVotifier's protocol documentation](https://github.com/NuVotifier/NuVotifier/wiki/Technical-QA): challenge-bound HMAC-SHA256 payload, big-endian framing and a numeric timestamp in milliseconds. Unit tests compare signatures against Node's crypto implementation and exercise success/failure against a real loopback TCP test listener. The implementation supports v2 only, not the RSA v1 protocol.
+
+## Shared UI
+
+Version 1.1.0 uses the SDK 0.4.0 shared UI stylesheet, enhanced selects, input/button styles and result notices. The example no longer carries its own dropdown implementation.

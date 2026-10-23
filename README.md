@@ -142,3 +142,15 @@ Run the examples and test your changes on a development Panel before distributin
 MIT — Copyright © Jordan Watts (Hive Development).
 
 See [LICENSE.md](https://github.com/HiveDevelopment/NectarSDK/blob/main/LICENSE.md).
+
+## Shared UI (0.4.0)
+
+Import optional DOM controls from `@hivedevelopment/nectar/ui`: buttons, fields, selects, switches, notices, loading/empty states, tabs and frame-local confirmation dialogs. `nectar build` automatically includes their shared stylesheet. No framework dependency or extra host permission is required.
+
+```ts
+import { button, notice } from '@hivedevelopment/nectar/ui';
+container.append(button('Refresh', { onClick: () => void refresh() }));
+status.replaceChildren(notice('Ready', 'success'));
+```
+
+Use the component reference at [docs.hivepanel.dev/nectar/ui](https://docs.hivepanel.dev/nectar/ui). The source bundle includes a UI Gallery example; 0.4.0 must be published before installing that version from npm.

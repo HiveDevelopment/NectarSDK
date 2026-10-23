@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0
+
+- Add framework-independent shared controls through the optional `/ui` entry point and exported `/ui.css`.
+- Include theme-aware shared CSS automatically in extension builds.
+- Add buttons, labelled inputs, enhanced selects, switches, notices, loading/empty states, tabs and frame-local confirmations.
+- Provide keyboard navigation, focus handling, reduced-motion styles and explicit control cleanup.
+- Migrate Hello Nectar, Votifier Tester and the generated starter to shared controls.
+- Add a bilingual UI Gallery example and component reference documentation.
+- Use cross-platform test discovery and esbuild 0.28.2.
+
+No new Panel or Worker capabilities are exposed. Existing 0.3.x bridge APIs remain compatible.
+
 ## 0.3.0
 
 - Export typed manifest, settings, permissions, page, slot and sidebar definitions.

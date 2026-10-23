@@ -10,5 +10,6 @@
   },
   "dependencies": {
     "@hivedevelopment/nectar": "file:../.."
-  }
+  },
+  "version": "0.2.0"
 }

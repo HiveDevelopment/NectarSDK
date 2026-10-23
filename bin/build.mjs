@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir, cp, rm, access } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
 import { validateManifest } from './manifest.mjs';
 import { packageFiles } from './archive.mjs';
@@ -18,7 +19,8 @@ export async function buildProject(root, panelVersion) {
     try { await access(path.join(root, 'public')); await cp(path.join(root, 'public'), dist, { recursive: true }); }
     catch (error) { if (error.code !== 'ENOENT') throw error; }
     await build({ entryPoints: [path.join(root, 'src/main.ts')], outfile: path.join(dist, 'index.js'), bundle: true, format: 'iife', platform: 'browser', target: 'es2022', sourcemap: false, logLevel: 'silent' });
-    const html = depth => `<!doctype html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nectar extension</title><link rel="stylesheet" href="${depth}style.css"></head><body><main id="app" aria-live="polite">Connecting to HivePanel…</main><script src="${depth}index.js" defer></script></body></html>\n`;
+    await cp(fileURLToPath(new URL('../styles/ui.css', import.meta.url)), path.join(dist, 'nectar-ui.css'));
+    const html = depth => `<!doctype html>\n<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nectar extension</title><link rel="stylesheet" href="${depth}nectar-ui.css"><link rel="stylesheet" href="${depth}style.css"></head><body><main id="app" aria-live="polite">Connecting to HivePanel…</main><script src="${depth}index.js" defer></script></body></html>\n`;
     await writeFile(path.join(dist, 'index.html'), html('./'));
     for (const page of manifest.frontend.pages ?? []) await writeFile(path.join(root, page.entry), html('../'));
     try { await access(path.join(dist, 'style.css')); }

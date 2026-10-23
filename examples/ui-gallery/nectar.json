@@ -1,0 +1,23 @@
+{
+  "id": "hivepanel.ui-gallery",
+  "name": "Nectar UI Gallery",
+  "version": "1.0.0",
+  "panelCompatibility": "dev",
+  "permissions": [],
+  "frontend": {
+    "entry": "dist/index.html",
+    "slots": [],
+    "pages": [
+      {
+        "slug": "components",
+        "title": "UI Gallery",
+        "entry": "dist/pages/components.html",
+        "context": "dashboard",
+        "sidebar": {
+          "group": "tools",
+          "icon": "puzzle"
+        }
+      }
+    ]
+  }
+}

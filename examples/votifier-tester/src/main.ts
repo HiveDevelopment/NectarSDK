@@ -1,16 +1,17 @@
 import { applyTheme, createNectar, type Cell } from '@hivedevelopment/nectar';
 import { sendTestVote } from './vote';
-import { enhanceSelect } from './select';
+import { enhanceSelect, notice } from '@hivedevelopment/nectar/ui';
 
 const app = document.querySelector<HTMLElement>('#app')!;
 // All dynamic values are assigned with textContent, value or Option, never interpolated into markup.
 app.innerHTML = `<h2 id="heading"></h2><p id="intro"></p><form id="vote"><div class="grid">
 <label id="cell-field"><span id="cell-label"></span><select id="cell" required></select></label>
 <label id="allocation-field"><span id="allocation-label"></span><select id="allocation" required></select></label>
-<label><span id="username-label"></span><input id="username" required pattern="[A-Za-z0-9_]{3,16}" maxlength="16" autocomplete="off"></label>
-<label><span id="service-label"></span><input id="service" required maxlength="64" value="HivePanelTest" autocomplete="off"></label>
-<label class="wide"><span id="token-label"></span><input id="token" type="password" required maxlength="512" autocomplete="off"></label>
-</div><p id="note"></p><button id="send" type="button" disabled></button></form><p id="status" role="status"></p>`;
+<label><span id="username-label"></span><input id="username" class="nectar-input" required pattern="[A-Za-z0-9_]{3,16}" maxlength="16" autocomplete="off"></label>
+<label><span id="service-label"></span><input id="service" class="nectar-input" required maxlength="64" value="HivePanelTest" autocomplete="off"></label>
+<label class="wide"><span id="token-label"></span><input id="token" class="nectar-input" type="password" required maxlength="512" autocomplete="off"></label>
+</div><p id="note"></p><button id="send" class="nectar-button nectar-button--primary" type="button" disabled></button></form><div id="status"></div>`;
+app.classList.add('nectar-page');
 const get = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const cellSelect = get<HTMLSelectElement>('cell'), allocationSelect = get<HTMLSelectElement>('allocation');
 const button = get<HTMLButtonElement>('send'), token = get<HTMLInputElement>('token');
@@ -31,11 +32,11 @@ const messages: Record<string, Record<string,string>> = {
         sending:'Verbindung wird hergestellt und Testvote gesendet…',accepted:'NuVotifier hat den Testvote angenommen. Prüfe die Belohnungen im Listener.' },
 };
 const text = (key: string) => messages[language]?.[key] ?? messages.en[key] ?? key;
-function status(key: string) { statusKey = key; get('status').textContent = text(key); }
+function status(key: string) { statusKey = key; get('status').replaceChildren(notice(text(key), key === 'accepted' ? 'success' : 'info')); }
 function translate() {
     for (const id of ['heading','intro','cell-label','allocation-label','username-label','service-label','token-label','note']) get(id).textContent = text(id);
     button.textContent = text('send');
-    if (statusKey) get('status').textContent = text(statusKey);
+    if (statusKey) get('status').replaceChildren(notice(text(statusKey), statusKey === 'accepted' ? 'success' : 'info'));
 }
 function allocations() {
     const cell = cells.find(cell => cell.id === cellSelect.value);
@@ -58,7 +59,7 @@ button.addEventListener('click',async () => {
             username:get<HTMLInputElement>('username').value,token:token.value,serviceName:get<HTMLInputElement>('service').value });
         status('accepted');
     } catch (error) {
-        statusKey = undefined; get('status').textContent = error instanceof Error ? error.message : 'Vote failed.';
+        statusKey = undefined; get('status').replaceChildren(notice(error instanceof Error ? error.message : 'Vote failed.', 'danger'));
     } finally {
         token.value = ''; busy = false; cellSelect.disabled = !!contextCellId; allocationSelect.disabled = false;
         button.disabled = !allocationSelect.value;
@@ -75,7 +76,7 @@ async function start() {
         cells = (await client.cells.list()).filter(cell => !context.cellId || cell.id === context.cellId);
         cellSelect.replaceChildren(...cells.map(cell => new Option(cell.name,cell.id)));
         cellSelect.disabled = !!context.cellId; allocations();
-    } catch (error) { statusKey = undefined; get('status').textContent = error instanceof Error ? error.message : 'Could not initialize.'; }
+    } catch (error) { statusKey = undefined; get('status').replaceChildren(notice(error instanceof Error ? error.message : 'Could not initialize.', 'danger')); }
 }
 translate(); void start();
-window.addEventListener('pagehide',() => { disposeSelects.forEach(dispose => dispose()); client.dispose(); },{ once:true });
+window.addEventListener('pagehide',() => { disposeSelects.forEach(control => control.dispose()); client.dispose(); },{ once:true });
