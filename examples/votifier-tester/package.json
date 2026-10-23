@@ -1,0 +1,15 @@
+{
+  "name": "hivepanel.votifier-tester",
+  "version": "1.0.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nectar dev",
+    "build": "nectar build",
+    "validate": "nectar validate --built",
+    "pack": "nectar pack"
+  },
+  "dependencies": {
+    "@hivepanel/nectar": "file:../.."
+  }
+}

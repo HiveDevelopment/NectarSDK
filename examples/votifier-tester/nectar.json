@@ -1,0 +1,35 @@
+{
+  "id": "hivepanel.votifier-tester",
+  "name": "Votifier Tester",
+  "version": "1.0.2",
+  "panelCompatibility": "dev",
+  "description": "Send a NuVotifier v2 test vote to a Minecraft Cell allocation.",
+  "permissions": [
+    "cells.read",
+    "network.tcp"
+  ],
+  "network": {
+    "tcp": {
+      "scope": "cell-allocations"
+    }
+  },
+  "frontend": {
+    "entry": "dist/index.html",
+    "slots": [],
+    "combs": [
+      "game:minecraft"
+    ],
+    "pages": [
+      {
+        "slug": "votifier",
+        "title": "Votifier Tester",
+        "entry": "dist/pages/votifier.html",
+        "context": "cell",
+        "sidebar": {
+          "group": "tools",
+          "icon": "vote"
+        }
+      }
+    ]
+  }
+}

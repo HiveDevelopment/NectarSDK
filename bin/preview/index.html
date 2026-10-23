@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nectar local preview</title><link rel="stylesheet" href="/__nectar/style.css"></head>
+<body><header><div><h1>Nectar preview</h1><p>Local mock environment · no real votes, network calls or Panel credentials</p></div><button id="reload">Reload extension</button></header>
+<nav aria-label="Preview controls">
+<label>Page<select id="page"></select></label><label>Cell context<select id="cell"></select></label>
+<label>Theme<select id="theme"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+<label>Language<select id="locale"><option value="en">English</option><option value="de">German</option><option value="fr">French</option></select></label>
+<label>Scenario<select id="scenario"><option value="success">Success</option><option value="denied">Permissions denied</option><option value="network-failure">Network failure</option></select></label>
+<label>Event<select id="event"><option>cell.updated</option><option>cell.created</option><option>cell.deleted</option></select></label><button id="emit">Emit event</button>
+</nav><p id="status" role="status">Building…</p><section id="frame"></section><details><summary>Capability activity (payloads and secrets are never shown)</summary><ul id="activity"></ul></details><script src="/__nectar/host.js"></script></body></html>

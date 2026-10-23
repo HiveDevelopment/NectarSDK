@@ -1,0 +1,20 @@
+name: Publish npm package
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    if: github.repository == 'HiveDevelopment/nectar-sdk' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm test
+      - run: npm publish --dry-run --access public
+      - run: npm publish --access public --provenance

@@ -1,0 +1,52 @@
+{
+  "name": "@hivepanel/nectar",
+  "version": "0.3.0",
+  "description": "Typed sandbox bridge and extension tooling for HivePanel Nectar",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "nectar": "./bin/nectar.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "templates",
+    "README.md",
+    "LICENSE.md",
+    "docs",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "esbuild": "0.24.2"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3"
+  },
+  "author": "Jordan Watts (Hive Development)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HiveDevelopment/nectar-sdk.git"
+  },
+  "homepage": "https://docs.hivepanel.dev/nectar/",
+  "bugs": {
+    "url": "https://github.com/HiveDevelopment/nectar-sdk/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

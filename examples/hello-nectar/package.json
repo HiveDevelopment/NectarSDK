@@ -1,0 +1,14 @@
+{
+  "name": "hivepanel.hello-nectar",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nectar build",
+    "validate": "nectar validate --built",
+    "pack": "nectar pack",
+    "dev": "nectar dev"
+  },
+  "dependencies": {
+    "@hivepanel/nectar": "file:../.."
+  }
+}
